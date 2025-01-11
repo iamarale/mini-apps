@@ -8,7 +8,7 @@ interface CardProps {
 const Card = ({ image, title, year, rating }: CardProps) => {
   return (
     <div
-      className="relative mx-auto h-96 w-full overflow-hidden rounded-lg bg-cover bg-center shadow-md"
+      className="relative mx-auto h-[700px] w-full rounded-lg bg-cover bg-center bg-no-repeat shadow-md"
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>

@@ -23,7 +23,7 @@ export default function App() {
         </div>
 
         <Link
-          className="bg-primary hover:bg-primary-dark mt-8 flex max-w-fit items-center gap-2 rounded-md px-4 py-2 text-white transition-all duration-300"
+          className="mt-8 flex max-w-fit items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-all duration-300 hover:bg-primary-dark"
           to="/movies"
         >
           <span>
@@ -36,7 +36,7 @@ export default function App() {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Featured Films</h1>
           <Link
-            className="text-primary flex items-center gap-2 hover:underline"
+            className="flex items-center gap-2 text-primary hover:underline"
             to="/movies"
           >
             View all
@@ -45,7 +45,7 @@ export default function App() {
             </span>
           </Link>
         </div>
-        <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3">
           <Card image={image} title={title} year={year} rating={rating} />
           <Card image={image} title={title} year={year} rating={rating} />
           <Card image={image} title={title} year={year} rating={rating} />
