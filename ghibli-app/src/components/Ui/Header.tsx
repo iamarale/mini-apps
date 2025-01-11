@@ -7,12 +7,27 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between">
         <h1>Logo</h1>
         <nav className="flex gap-4">
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
-          <Link to="/characters">Characters</Link>
+          <Link
+            className="[&.active]:font-bold [&.active]:text-primary [&.active]:underline"
+            to="/"
+          >
+            Home
+          </Link>
+          <Link
+            className="[&.active]:font-bold [&.active]:text-primary [&.active]:underline"
+            to="/movies"
+          >
+            Movies
+          </Link>
+          <Link
+            className="[&.active]:font-bold [&.active]:text-primary [&.active]:underline"
+            to="/characters"
+          >
+            Characters
+          </Link>
         </nav>
         <FaRegCircleUser
-          className="text-primary hover:text-primary-dark cursor-pointer"
+          className="cursor-pointer text-primary hover:text-primary-dark"
           size={20}
         />
       </div>
