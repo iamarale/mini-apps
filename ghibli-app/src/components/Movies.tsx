@@ -54,7 +54,7 @@ const App: React.FC = () => {
         </div>
         <div className="mt-8 flex justify-between">
           <input
-            className="rounded-md bg-secondary px-2 py-1"
+            className="rounded-md bg-secondary px-4 py-2"
             type="text"
             placeholder="Search a movie..."
             onChange={(e) => setSearch(e.target.value)}
@@ -62,7 +62,7 @@ const App: React.FC = () => {
           <div className="flex items-center gap-2">
             <h4>Sort by: </h4>
             <select
-              className="rounded-md bg-secondary px-2 py-1"
+              className="rounded-md bg-secondary px-4 py-2"
               onChange={(e) => setSort(e.target.value)}
             >
               <option value="title">Title</option>
