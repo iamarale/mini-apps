@@ -1,4 +1,5 @@
 import { CiStar } from "react-icons/ci";
+import { motion } from "framer-motion";
 interface CardProps {
   image: string;
   title: string;
@@ -7,7 +8,9 @@ interface CardProps {
 }
 const Card = ({ image, title, year, rating }: CardProps) => {
   return (
-    <div
+    <motion.div
+      whileInView={{ opacity: 1, transition: { duration: 2 } }}
+      initial={{ opacity: 0 }}
       className="relative mx-auto h-[700px] w-full rounded-lg bg-cover bg-center bg-no-repeat shadow-md"
       style={{ backgroundImage: `url(${image})` }}
     >
@@ -25,7 +28,7 @@ const Card = ({ image, title, year, rating }: CardProps) => {
           {rating}
         </h1>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

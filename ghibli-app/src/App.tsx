@@ -5,7 +5,7 @@ import Card from "./components/Ui/Card";
 import Footer from "./components/Ui/Footer";
 import { useEffect, useState } from "react";
 import { getGhibliData } from "./api/films";
-
+import { motion } from "framer-motion";
 interface Films {
   id: string;
   title: string;
@@ -45,17 +45,20 @@ export default function App() {
           </p>
         </div>
 
-        <Link
-          className="mt-8 flex max-w-fit items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-all duration-300 hover:bg-primary-dark"
+        <motion.Link
+          whileHover={{
+            y: -5,
+          }}
+          className="mt-8 flex max-w-fit cursor-pointer items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-all duration-300 hover:bg-primary-dark"
           to="/movies"
         >
           <span>
             <SlControlPlay />
           </span>
           View all Movies
-        </Link>
+        </motion.Link>
       </main>
-      <div className="container mx-auto mb-16 mt-24 p-2 md:p-0">
+      <motion.div className="container mx-auto mb-16 mt-24 p-2 md:p-0">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Featured Films</h1>
           <Link
@@ -93,7 +96,7 @@ export default function App() {
             Learn More About Our Story
           </Link>
         </div>
-      </div>
+      </motion.div>
       <hr></hr>
       <Footer />
     </section>
