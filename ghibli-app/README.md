@@ -7,8 +7,15 @@
 - [Typescript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [Motion](https://motion.dev/)
 
 ### Features
+
+- Movies section
+- Movie Details page
+- Character page
+
+## Todo
 
 - [ ] Add a search bar
 - [ ] Add a filter by title
