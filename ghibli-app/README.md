@@ -1,6 +1,6 @@
 # Ghibli Movies
 
-# Stack
+### Stack
 
 - [Vite](https://vitejs.dev/)
 - [React](https://react.dev/)
@@ -12,14 +12,14 @@
 - [React Hook Form](https://react-hook-form.com/)
 - [Zod](https://zod.dev/)
 
-# Features
+### Features
 
 - [ ] Add a search bar
 - [ ] Add a filter by title
 - [ ] Add a filter by year
 - [ ] Add a filter by rating
 
-# Set up
+### Set up
 
 ```bash
 git clone https://github.com/iamarale/mini-apps.git
