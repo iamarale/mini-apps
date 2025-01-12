@@ -3,12 +3,35 @@ import { SlControlPlay } from "react-icons/sl";
 import { FaArrowRight } from "react-icons/fa";
 import Card from "./components/Ui/Card";
 import Footer from "./components/Ui/Footer";
+import { useEffect, useState } from "react";
+import { getGhibliData } from "./api/films";
 
+interface Films {
+  id: string;
+  title: string;
+  rt_score: number;
+  image: string;
+  release_date: string;
+}
 export default function App() {
-  const image = "https://placehold.co/600x400";
-  const title = "Placeholderrr";
-  const year = "2024";
-  const rating = 8.5;
+  const [topFilms, setTopFilms] = useState<Films[]>([]);
+
+  useEffect(() => {
+    const fetchTopFilms = async () => {
+      try {
+        const data = await getGhibliData("films");
+
+        const sortedFilms = data
+          .sort((a: Films, b: Films) => b.rt_score - a.rt_score)
+          .slice(0, 3);
+
+        setTopFilms(sortedFilms);
+      } catch (error) {
+        console.error("Error fetching films:", error);
+      }
+    };
+    fetchTopFilms();
+  }, []);
 
   return (
     <section className="bg-hero h-[500px]">
@@ -46,9 +69,15 @@ export default function App() {
           </Link>
         </div>
         <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3">
-          <Card image={image} title={title} year={year} rating={rating} />
-          <Card image={image} title={title} year={year} rating={rating} />
-          <Card image={image} title={title} year={year} rating={rating} />
+          {topFilms.map((film) => (
+            <Card
+              key={film.id}
+              image={film.image}
+              title={film.title}
+              year={film.release_date}
+              rating={Number(film.rt_score)}
+            />
+          ))}
         </div>
 
         <div className="mt-24 text-center">

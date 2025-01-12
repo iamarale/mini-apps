@@ -3,8 +3,18 @@ import React, { useEffect, useState } from "react";
 import { getGhibliData } from "../api/films";
 import Card from "./Ui/Card";
 
+interface Films {
+  id: string;
+  title: string;
+  rt_score: number;
+  image: string;
+  release_date: string;
+}
+
 const App: React.FC = () => {
-  const [films, setFilms] = useState<[]>([]);
+  const [films, setFilms] = useState<Films[]>([]);
+  const [sort, setSort] = useState<string>("title");
+  const [search, setSearch] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -42,13 +52,17 @@ const App: React.FC = () => {
       </div>
       <div className="mt-8 flex justify-between">
         <input
-          className="bg-secondary rounded-md px-2 py-1"
+          className="rounded-md bg-secondary px-2 py-1"
           type="text"
           placeholder="Search a movie..."
+          onChange={(e) => setSearch(e.target.value)}
         />
         <div className="flex items-center gap-2">
           <h4>Sort by: </h4>
-          <select className="bg-secondary rounded-md px-2 py-1">
+          <select
+            className="rounded-md bg-secondary px-2 py-1"
+            onChange={(e) => setSort(e.target.value)}
+          >
             <option value="title">Title</option>
             <option value="year">Year</option>
             <option value="rating">Rating</option>
@@ -56,12 +70,12 @@ const App: React.FC = () => {
         </div>
       </div>
       <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3">
-        {films.map((film) => (
+        {films.map((film: Films) => (
           <Card
             image={film.image}
             title={film.title}
-            year={film.year}
-            rating={film.rating}
+            year={film.release_date}
+            rating={film.rt_score}
           />
         ))}
       </div>
