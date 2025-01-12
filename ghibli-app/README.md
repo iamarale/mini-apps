@@ -3,14 +3,10 @@
 ### Stack
 
 - [Vite](https://vitejs.dev/)
-- [React](https://react.dev/)
 - [Tanstack Router](https://tanstack.com/router)
+- [Typescript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn](https://ui.shadcn.com/)
-- [React Query](https://tanstack.com/query)
 - [React Icons](https://react-icons.github.io/react-icons/)
-- [React Hook Form](https://react-hook-form.com/)
-- [Zod](https://zod.dev/)
 
 ### Features
 
