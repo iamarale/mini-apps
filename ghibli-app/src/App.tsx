@@ -45,18 +45,22 @@ export default function App() {
           </p>
         </div>
 
-        <motion.Link
+        {/* hover-btn */}
+        <motion.div
           whileHover={{
             y: -5,
           }}
-          className="mt-8 flex max-w-fit cursor-pointer items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-all duration-300 hover:bg-primary-dark"
-          to="/movies"
         >
-          <span>
-            <SlControlPlay />
-          </span>
-          View all Movies
-        </motion.Link>
+          <Link
+            className="mt-8 flex max-w-fit cursor-pointer items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-all duration-300 hover:bg-primary-dark"
+            to="/movies"
+          >
+            <span>
+              <SlControlPlay />
+            </span>
+            View all Movies
+          </Link>
+        </motion.div>
       </main>
       <motion.div className="container mx-auto mb-16 mt-24 p-2 md:p-0">
         <div className="flex items-center justify-between">

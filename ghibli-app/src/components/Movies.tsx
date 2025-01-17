@@ -25,7 +25,6 @@ const App: React.FC = () => {
         setLoading(true);
         const filmsData = await getGhibliData("films");
         setFilms(filmsData);
-        console.log(filmsData);
         setLoading(false);
       } catch (err: any) {
         setError(err.message);
@@ -34,13 +33,6 @@ const App: React.FC = () => {
 
     getFilms();
   }, []);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
@@ -74,6 +66,7 @@ const App: React.FC = () => {
         <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3">
           {films.map((film: Films) => (
             <Card
+              id={film.id}
               image={film.image}
               title={film.title}
               year={film.release_date}

@@ -14,19 +14,14 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as CharactersImport } from './routes/characters'
+import { Route as MoviesIndexImport } from './routes/movies/index'
+import { Route as MoviesMovieIdImport } from './routes/movies/$movieId'
 
 // Create Virtual Routes
 
-const MoviesLazyImport = createFileRoute('/movies')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
-
-const MoviesLazyRoute = MoviesLazyImport.update({
-  id: '/movies',
-  path: '/movies',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/movies.lazy').then((d) => d.Route))
 
 const CharactersRoute = CharactersImport.update({
   id: '/characters',
@@ -39,6 +34,18 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const MoviesIndexRoute = MoviesIndexImport.update({
+  id: '/movies/',
+  path: '/movies/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MoviesMovieIdRoute = MoviesMovieIdImport.update({
+  id: '/movies/$movieId',
+  path: '/movies/$movieId',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -58,11 +65,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CharactersImport
       parentRoute: typeof rootRoute
     }
-    '/movies': {
-      id: '/movies'
+    '/movies/$movieId': {
+      id: '/movies/$movieId'
+      path: '/movies/$movieId'
+      fullPath: '/movies/$movieId'
+      preLoaderRoute: typeof MoviesMovieIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/movies/': {
+      id: '/movies/'
       path: '/movies'
       fullPath: '/movies'
-      preLoaderRoute: typeof MoviesLazyImport
+      preLoaderRoute: typeof MoviesIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -73,41 +87,46 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/characters': typeof CharactersRoute
-  '/movies': typeof MoviesLazyRoute
+  '/movies/$movieId': typeof MoviesMovieIdRoute
+  '/movies': typeof MoviesIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/characters': typeof CharactersRoute
-  '/movies': typeof MoviesLazyRoute
+  '/movies/$movieId': typeof MoviesMovieIdRoute
+  '/movies': typeof MoviesIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/characters': typeof CharactersRoute
-  '/movies': typeof MoviesLazyRoute
+  '/movies/$movieId': typeof MoviesMovieIdRoute
+  '/movies/': typeof MoviesIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/characters' | '/movies'
+  fullPaths: '/' | '/characters' | '/movies/$movieId' | '/movies'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/characters' | '/movies'
-  id: '__root__' | '/' | '/characters' | '/movies'
+  to: '/' | '/characters' | '/movies/$movieId' | '/movies'
+  id: '__root__' | '/' | '/characters' | '/movies/$movieId' | '/movies/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   CharactersRoute: typeof CharactersRoute
-  MoviesLazyRoute: typeof MoviesLazyRoute
+  MoviesMovieIdRoute: typeof MoviesMovieIdRoute
+  MoviesIndexRoute: typeof MoviesIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   CharactersRoute: CharactersRoute,
-  MoviesLazyRoute: MoviesLazyRoute,
+  MoviesMovieIdRoute: MoviesMovieIdRoute,
+  MoviesIndexRoute: MoviesIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -122,7 +141,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/characters",
-        "/movies"
+        "/movies/$movieId",
+        "/movies/"
       ]
     },
     "/": {
@@ -131,8 +151,11 @@ export const routeTree = rootRoute
     "/characters": {
       "filePath": "characters.tsx"
     },
-    "/movies": {
-      "filePath": "movies.lazy.tsx"
+    "/movies/$movieId": {
+      "filePath": "movies/$movieId.tsx"
+    },
+    "/movies/": {
+      "filePath": "movies/index.tsx"
     }
   }
 }
