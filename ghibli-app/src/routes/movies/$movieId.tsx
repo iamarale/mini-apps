@@ -23,6 +23,10 @@ export const Route = createFileRoute("/movies/$movieId")({
           <h2>{film.release_date}</h2>
           <h2>{film.rt_score}</h2>
         </div>
+
+        <button className="rounded-md border-2 border-primary p-2 duration-150 hover:bg-primary-dark">
+          Favorite
+        </button>
       </div>
     );
   },
