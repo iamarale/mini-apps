@@ -36,7 +36,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <main className="container mx-auto mt-16 p-4">
+      <main className="mt-18 container mx-auto p-4">
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-bold">Explore Films</h1>
           <p className="opacity-70">
@@ -63,9 +63,10 @@ const App: React.FC = () => {
             </select>
           </div>
         </div>
-        <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-8 xl:grid-cols-3">
           {films.map((film: Films) => (
             <Card
+              key={film.id}
               id={film.id}
               image={film.image}
               title={film.title}
