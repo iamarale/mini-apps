@@ -35,7 +35,7 @@ function MovieDetails() {
           src={film.movie_banner}
           alt={`${film.title} movie banner`}
         />
-        <figcaption className="container mx-auto flex justify-center text-sm font-light opacity-50">
+        <figcaption className="container mx-auto flex justify-end text-sm font-light opacity-50 xl:justify-center">
           {film.title} movie banner
         </figcaption>
       </figure>
