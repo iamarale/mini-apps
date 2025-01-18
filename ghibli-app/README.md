@@ -18,9 +18,10 @@
 ## Todo
 
 - [ ] Add a search bar
-- [ ] Add a filter by title
-- [ ] Add a filter by year
-- [ ] Add a filter by rating
+- [ ] Fix filters
+- [ ] Add a card component
+- [x] Add animations to cards
+- [ ]
 
 ### Set up
 
