@@ -1,3 +1,5 @@
+import { Route } from "@tanstack/react-router";
+
 export default function Characters() {
   return (
     <main className="container mx-auto">
